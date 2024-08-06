@@ -1,0 +1,43 @@
+Content Delivery Network (CDN)
+
+A Content Delivery Network (CDN) is a system of distributed servers (network) that deliver web content to a user based on the geographic locations of the user, the origin of the web page, and a content delivery server. CDNs serve content to end-users with high availability and high performance. Here’s how they work:
+
+	1.	Distributed Network of Servers: CDNs have servers located in various geographical locations. These servers cache the content from the origin server.
+	2.	Load Distribution: When a user requests a resource, the request is directed to the nearest server in the CDN network. This minimizes latency and speeds up the loading process.
+	3.	Reduced Server Load: By distributing the load across multiple servers, CDNs reduce the load on the origin server, preventing bottlenecks and improving scalability.
+
+
+Cross-Origin Attribute in Script Tag
+	The crossorigin attribute in a <script> tag is used to handle CORS (Cross-Origin Resource Sharing) requests. CORS is a security feature implemented by web browsers to prevent scripts on one domain from making requests to another domain without explicit permission. Here’s what it does:
+
+	1.	Enables Cross-Origin Requests: When included, it allows the browser to make requests to the script’s origin.
+	2.	Different Values:
+	•	anonymous: This means that the browser will not send credentials (such as cookies, HTTP authentication, and client-side SSL certificates) along with the request.
+	•	use-credentials: This means that the browser will send credentials along with the request. The server must respond with appropriate CORS headers to allow this.
+	3.	CORS Headers: The server hosting the script must include CORS headers (like Access-Control-Allow-Origin) to allow the resource to be shared across different origins.
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+
+	Behavior with and without crossorigin Attribute
+
+	With crossorigin Attribute
+
+	When you include the crossorigin attribute in a <script> tag, the browser handles the cross-origin request according to the specified value:
+
+		•	crossorigin="anonymous": The browser will make the request without credentials. This is useful when you don’t need to send cookies or authentication headers with the request.
+		•	crossorigin="use-credentials": The browser will include credentials with the request. The server must respond with Access-Control-Allow-Credentials: true and other appropriate CORS headers.
+
+	Without crossorigin Attribute
+
+	If you don’t include the crossorigin attribute in the <script> tag:
+
+		•	The browser will still make the cross-origin request, but it will not include credentials by default.
+		•	If the script is loaded from a different origin and the server does not include the appropriate CORS headers in its response, the browser may block the script from being executed.
+
+
+	<script crossorigin="use-credentials" src="https://example.com/script.js"></script>
+	In this case, the browser will request script.js from example.com and include credentials with the request. The server must respond with the appropriate CORS headers, including Access-Control-Allow-Credentials: true.
+
+	<script src="https://example.com/script.js"></script>
+	In this case, the browser will request script.js from example.com without including credentials by default. If the server does not include the appropriate CORS headers in its response, the script may be blocked by the browser.
