@@ -1,16 +1,12 @@
 # react
 
-npm init
-
-npm install 
-
-npm install -D parcel
-
-dev build: npx parcel index.html
-prod build: npx parcel build index.html
-
-npm install react 
-npm install react-dom
+- npm init
+- npm install 
+- npm install -D parcel
+- dev build: npx parcel index.html
+- prod build: npx parcel build index.html
+- npm install react 
+- npm install react-dom
 
 
 # Parcel
