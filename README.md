@@ -8,6 +8,8 @@
 - npm install react 
 - npm install react-dom
 
+- npm run start
+- npm run build
 
 # Parcel
 - Dev Build
@@ -27,3 +29,9 @@
 - HTTPs
 - Tree Shaking - remove unused code
 - Different dev and prod bundles
+
+
+# React Hooks
+Normal JS utility functions
+- useState() - generate state variables in react
+- useEffect()
