@@ -35,3 +35,7 @@
 Normal JS utility functions
 - useState() - generate state variables in react
 - useEffect()
+
+# 2 types of Routing in web apps
+ - Client Side Routing --> no network call is made to load html, network call will be made when api call is made to fetch data.
+ - Server Side Routing

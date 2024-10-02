@@ -2,28 +2,30 @@ import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API_URL } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  const { resId } = useParams();
+  // commenting this because... component should be given single responsiblitiy.. here RestaurantMenu component should display component it should not worry about how data is being fetched.. so api call is abstracted and written as a custom hook..custom hook is nothing but it is just a normal js utility function
+  // const [resInfo, setResInfo] = useState(null);
+  // const { resId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-  const fetchMenu = async () => {
-    const data = await fetch(MENU_API_URL + resId);
-    const json = await data.json();
-    console.log(json);
-    //const restaurantInfo = json?.data?.cards[2]?.card?.card?.info
-    setResInfo(json.data);
-    //console.log("im here", resInfo);
-  };
+  // useEffect(() => {
+  //   fetchMenu();
+  // }, []);
+  // const fetchMenu = async () => {
+  //   const data = await fetch(MENU_API_URL + resId);
+  //   const json = await data.json();
+  //   //const restaurantInfo = json?.data?.cards[2]?.card?.card?.info
+  //   setResInfo(json.data);
+  // };
+
+  const {resId} = useParams();
+  const resInfo = useRestaurantMenu(resId)
 
   if (resInfo === null) {
     return <Shimmer />;
   }
 
-  console.log('im here', resInfo)
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[2]?.card?.card?.info;
 
